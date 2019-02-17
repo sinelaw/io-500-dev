@@ -58,7 +58,8 @@ function setup_paths {
   io500_mdtest_cmd=$PWD/bin/mdtest
   io500_mdreal_cmd=$PWD/bin/md-real-io
   io500_mpirun="mpirun"
-  io500_mpiargs="-np 2"
+  io500_mpiargs="-np 16 --npernode 4 --oversubscribe --allow-run-as-root"
+ # --host 10.142.0.32,10.142.0.37,10.142.0.38,10.142.0.39"
 }
 
 function setup_ior_easy {
@@ -77,7 +78,7 @@ function setup_mdt_easy {
 
 function setup_ior_hard {
   io500_ior_hard_writes_per_proc=10000
-  io500_ior_hard_other_options="" #e.g., -E to keep precreated files using lfs setstripe, or -a MPIIO
+  io500_ior_hard_other_options="-B" #e.g., -E to keep precreated files using lfs setstripe, or -a MPIIO
 }
 
 function setup_mdt_hard {
